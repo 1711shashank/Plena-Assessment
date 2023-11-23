@@ -6,7 +6,7 @@ import CartItem from './CartItem';
 
 const Cart = () => {
     return (
-        <View style={{ width: '100%', height: '100%', alignItems: 'center', paddingTop: 53, paddingHorizontal: 30 }}>
+        <View style={{ width: '100%', height: '100%', alignItems: 'center', paddingTop: 50, paddingHorizontal: 30 }}>
 
             <View style={{ width: '100%', flexDirection: 'row', alignItems: 'center' }}>
                 <View style={{ backgroundColor: '#F8F9FB', padding: 10, borderRadius: 50, marginRight: 20 }} >
