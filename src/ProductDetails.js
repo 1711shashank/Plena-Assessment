@@ -58,8 +58,8 @@ const ProductDetails = () => {
                     </TouchableOpacity>
                 </View>
 
-                <View style={{marginTop:20}}>
-                    <Text style={{ color: '#1E222B', fontSize: 16, marginVertical:6 }}>
+                <View style={{ marginTop: 20 }}>
+                    <Text style={{ color: '#1E222B', fontSize: 16, marginVertical: 6 }}>
                         Details
                     </Text>
                     <Text style={{ color: '#8891A5', fontSize: 16 }}>
