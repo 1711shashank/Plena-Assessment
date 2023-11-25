@@ -4,12 +4,12 @@ import { Entypo } from '@expo/vector-icons';
 import CartItem from '../components/CartItem';
 
 
-const Cart = ({setActiveScreen}) => {
+const Cart = ({ navigation }) => {
     return (
         <View style={{ width: '100%', height: '100%', alignItems: 'center', paddingTop: 50, paddingHorizontal: 30 }}>
 
             <View style={{ width: '100%', flexDirection: 'row', alignItems: 'center' }}>
-                <TouchableOpacity style={{ backgroundColor: '#F8F9FB', padding: 10, borderRadius: 50, marginRight: 20 }}  onPress={()=>setActiveScreen('Home')}>
+                <TouchableOpacity style={{ backgroundColor: '#F8F9FB', padding: 10, borderRadius: 50, marginRight: 20 }} onPress={() => navigation.goBack()}>
                     <Entypo name="chevron-small-left" size={24} color="#1E222B" />
                 </TouchableOpacity>
                 <Text style={{ fontSize: 16 }}>Shopping Cart (5)</Text>

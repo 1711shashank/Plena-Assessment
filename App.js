@@ -6,46 +6,40 @@ import Favourite from './src/screens/Favourite';
 import More from './src/screens/More';
 import Cart from './src/screens/Cart';
 import ProductScreen from './src/screens/ProductScreen';
-
 import MenuButtons from './src/components/MenuButtons';
+
 import axios from 'axios';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+
 
 
 export default function App() {
 
-    const [activeScreen, setActiveScreen] = useState('Home');
-    const [activeTab, setActiveTab] = useState('Home');
-
-    const [productsData, setProductsData] = useState([]);
-
-
-    const fetchData = async () => {
-
-        const response = await axios.get('https://dummyjson.com/products');
-        setProductsData(response.data.products);
-    }
-
-    useEffect(() => {
-        fetchData();
-    }, [])
+    const Stack = createNativeStackNavigator();
 
     return (
-        <View style={{ flex: 1 }}>
+        <NavigationContainer>
+            <Stack.Navigator>
 
-            {activeScreen === 'ProductScreen' && <ProductScreen setActiveScreen={setActiveScreen} />}
-            {activeScreen === 'Cart' && <Cart setActiveScreen={setActiveScreen} />}
-            {activeScreen === 'Home'
-                &&
-                <View style={{ width: '100%', flex: 1, paddingTop: -20, }}>
+                <Stack.Screen
+                    name="Home"
+                    component={Home}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    name="ProductScreen"
+                    component={ProductScreen}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    name="Cart"
+                    component={Cart}
+                    options={{ headerShown: false }}
+                />
 
-                    {activeTab === 'Home' && <Home productsData={productsData} />}
-                    {activeTab === 'Categories' && <Categories />}
-                    {activeTab === 'Favourite' && <Favourite />}
-                    {activeTab === 'More' && <More />}
-
-                    <MenuButtons activeTab={activeTab} setActiveTab={setActiveTab} />
-                </View >
-            }
-        </View>
+            </Stack.Navigator>
+        </NavigationContainer>
     );
 }

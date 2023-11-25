@@ -7,7 +7,7 @@ import { AntDesign, Ionicons } from '@expo/vector-icons';
 const ProductCard = ({ productData }) => {
 
     return (
-        <View style={{ width: '45%', margin: 8, aspectRatio: 160 / 194, backgroundColor: '#F8F9FB', padding: 10, borderRadius: 15, alignItems: 'center', justifyContent: 'space-between' }}>
+        <>
             <Image
                 style={{ width: '100%', height: '60%', borderRadius: 10 }}
                 source={{ uri: productData.thumbnail }}
@@ -28,8 +28,7 @@ const ProductCard = ({ productData }) => {
                 </TouchableOpacity>
             </View>
 
-        </View>
-
+        </>
     )
 }
 
