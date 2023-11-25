@@ -7,7 +7,9 @@ import Cart from './src/screens/Cart';
 import ProductScreen from './src/screens/ProductScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { View } from 'react-native';
+
+import { Provider } from 'react-redux';
+import store from './src/redux/store';
 
 
 export default function App() {
@@ -15,43 +17,45 @@ export default function App() {
     const Stack = createNativeStackNavigator();
 
     return (
+        <Provider store={store} >
 
-        <NavigationContainer>
-            <Stack.Navigator>
+            <NavigationContainer>
+                <Stack.Navigator>
 
-                <Stack.Screen
-                    name="Home"
-                    component={Home}
-                    options={{ headerShown: false }}
-                />
-                <Stack.Screen
-                    name="ProductScreen"
-                    component={ProductScreen}
-                    options={{ headerShown: false }}
-                />
-                <Stack.Screen
-                    name="Cart"
-                    component={Cart}
-                    options={{ headerShown: false }}
-                />
+                    <Stack.Screen
+                        name="Home"
+                        component={Home}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="ProductScreen"
+                        component={ProductScreen}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="Cart"
+                        component={Cart}
+                        options={{ headerShown: false }}
+                    />
 
-                <Stack.Screen
-                    name="Categories"
-                    component={Categories}
-                    options={{ headerShown: false }}
-                />
-                <Stack.Screen
-                    name="Favourite"
-                    component={Favourite}
-                    options={{ headerShown: false }}
-                />
-                <Stack.Screen
-                    name="More"
-                    component={More}
-                    options={{ headerShown: false }}
-                />
-            </Stack.Navigator>
-        </NavigationContainer>
+                    <Stack.Screen
+                        name="Categories"
+                        component={Categories}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="Favourite"
+                        component={Favourite}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="More"
+                        component={More}
+                        options={{ headerShown: false }}
+                    />
+                </Stack.Navigator>
+            </NavigationContainer>
+        </Provider>
 
     );
 }

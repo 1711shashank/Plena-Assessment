@@ -1,10 +1,17 @@
 import React from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native'
 import { AntDesign, Ionicons } from '@expo/vector-icons';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../redux/cartSlice';
 
 
 
 const ProductCard = ({ productData }) => {
+
+    const dispatch = useDispatch();
+    const handleAddCart = (productData) => {
+        dispatch(addItem(productData));
+    }
 
     return (
         <>
@@ -23,7 +30,7 @@ const ProductCard = ({ productData }) => {
                     <Text style={{ color: '#1E222B', fontWeight: 600 }}> $ {productData.price}</Text>
                     <Text style={{ color: '#616A7D', fontSize: 12 }} numberOfLines={2} ellipsizeMode="tail">{productData.title}</Text>
                 </View>
-                <TouchableOpacity style={{ marginTop: 10, backgroundColor: '#2A4BA0', borderRadius: 50, padding: 5 }} >
+                <TouchableOpacity onPress={() => handleAddCart(productData)} style={{ marginTop: 10, backgroundColor: '#2A4BA0', borderRadius: 50, padding: 5 }} >
                     <AntDesign name="plus" size={20} color="#FFF" />
                 </TouchableOpacity>
             </View>

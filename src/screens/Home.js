@@ -46,11 +46,10 @@ const Home = ({ navigation }) => {
                 <View style={{ flexWrap: 'wrap', flexDirection: 'row', alignItems: 'flex-start' }}>
 
                     {productsData?.map((item) => (
-                        <TouchableOpacity onPress={() =>
-                            navigation.push('ProductScreen', {
-                                productData: item
-                            })
-                        } style={styles.producCard} key={item.id}>
+                        <TouchableOpacity
+                            style={styles.producCard} key={item.id}
+                            onPress={() => navigation.push('ProductScreen', { productData: item })}
+                        >
                             <ProductCard productData={item} />
                         </TouchableOpacity>
                     ))}
