@@ -3,47 +3,47 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { Entypo, Feather, Ionicons, } from '@expo/vector-icons';
 
 
-const MenuButtons = ({ activeIcon, setActiveIcon }) => {
+const MenuButtons = ({ activeTab, setActiveTab }) => {
     return (
 
         <View style={styles.menuButtons}>
 
             <View style={styles.menuButtonsWrapper}>
 
-                <TouchableOpacity style={[styles.iconWrapper, { left: '0%' }, activeIcon === 'Home' && { top: -20 }]} onPress={() => setActiveIcon('Home')}>
-                    <View style={activeIcon === 'Home' && styles.iconView} >
+                <TouchableOpacity style={[styles.iconWrapper, { left: '0%' }, activeTab === 'Home' && { top: -20 }]} onPress={() => setActiveTab('Home')}>
+                    <View style={activeTab === 'Home' && styles.iconView} >
                         {
-                            activeIcon === 'Home'
+                            activeTab === 'Home'
                                 ? <Entypo name="home" size={24} color='#E0B420' />
                                 : <Feather name="home" size={24} color='#3E4554' />
                         }
                     </View>
-                    <Text style={[styles.iconText, activeIcon === 'Home' && { display: 'none' }]}> Home</Text>
+                    <Text style={[styles.iconText, activeTab === 'Home' && { display: 'none' }]}> Home</Text>
                 </TouchableOpacity >
 
-                <TouchableOpacity style={[styles.iconWrapper, { left: '25%' }, activeIcon === 'Categories' && { top: -20 }]} onPress={() => setActiveIcon('Categories')}>
-                    <View style={activeIcon === 'Categories' && styles.iconView} >
-                        <Feather name="command" size={24} color={activeIcon === 'Categories' ? '#E0B420' : '#3E4554'} />
+                <TouchableOpacity style={[styles.iconWrapper, { left: '25%' }, activeTab === 'Categories' && { top: -20 }]} onPress={() => setActiveTab('Categories')}>
+                    <View style={activeTab === 'Categories' && styles.iconView} >
+                        <Feather name="command" size={24} color={activeTab === 'Categories' ? '#E0B420' : '#3E4554'} />
                     </View>
-                    <Text style={[styles.iconText, activeIcon === 'Categories' && { display: 'none' }]}> Categories</Text>
+                    <Text style={[styles.iconText, activeTab === 'Categories' && { display: 'none' }]}> Categories</Text>
                 </TouchableOpacity >
 
-                <TouchableOpacity style={[styles.iconWrapper, { left: '50%' }, activeIcon === 'Favourite' && { top: -20 }]} onPress={() => setActiveIcon('Favourite')}>
-                    <View style={activeIcon === 'Favourite' && styles.iconView} >
+                <TouchableOpacity style={[styles.iconWrapper, { left: '50%' }, activeTab === 'Favourite' && { top: -20 }]} onPress={() => setActiveTab('Favourite')}>
+                    <View style={activeTab === 'Favourite' && styles.iconView} >
                         {
-                            activeIcon === 'Favourite'
+                            activeTab === 'Favourite'
                                 ? <Ionicons name="ios-heart" size={24} color='#E0B420' />
                                 : <Ionicons name="ios-heart-outline" size={24} color='#3E4554' />
                         }
                     </View>
-                    <Text style={[styles.iconText, activeIcon === 'Favourite' && { display: 'none' }]}> Favourite</Text>
+                    <Text style={[styles.iconText, activeTab === 'Favourite' && { display: 'none' }]}> Favourite</Text>
                 </TouchableOpacity >
 
-                <TouchableOpacity style={[styles.iconWrapper, { left: '75%' }, activeIcon === 'More' && { top: -20 }]} onPress={() => setActiveIcon('More')}>
-                    <View style={activeIcon === 'More' && styles.iconView} >
-                        <Entypo name="dots-three-vertical" size={24} color={activeIcon === 'More' ? '#E0B420' : '#3E4554'} />
+                <TouchableOpacity style={[styles.iconWrapper, { left: '75%' }, activeTab === 'More' && { top: -20 }]} onPress={() => setActiveTab('More')}>
+                    <View style={activeTab === 'More' && styles.iconView} >
+                        <Entypo name="dots-three-vertical" size={24} color={activeTab === 'More' ? '#E0B420' : '#3E4554'} />
                     </View>
-                    <Text style={[styles.iconText, activeIcon === 'More' && { display: 'none' }]}> More</Text>
+                    <Text style={[styles.iconText, activeTab === 'More' && { display: 'none' }]}> More</Text>
                 </TouchableOpacity >
 
             </View>

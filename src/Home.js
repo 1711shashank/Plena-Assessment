@@ -3,7 +3,6 @@ import { Text, TouchableOpacity, View, ScrollView } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import SearchBar from './SearchBar'
 import AddressInfo from './AddressInfo'
-import MenuButtons from './MenuButtons'
 import ProductCard from './ProductCard'
 import DiscountCoupons from './DiscountCoupons';
 
@@ -11,8 +10,7 @@ import DiscountCoupons from './DiscountCoupons';
 
 const Home = () => {
 
-    const [activeIcon, setActiveIcon] = useState('Home');
-    const [searchQuery, setSearchQuery] = React.useState('');
+    const [searchQuery, setSearchQuery] = useState('');
 
 
 
@@ -37,7 +35,7 @@ const Home = () => {
             <ScrollView>
 
                 <DiscountCoupons />
-                
+
                 <Text style={{ color: '#1E222B', fontSize: 30, paddingVertical: 5 }}> Recommended </Text>
                 <View style={{ flexWrap: 'wrap', flexDirection: 'row', alignItems: 'flex-start' }}>
 
@@ -50,9 +48,6 @@ const Home = () => {
 
                 </View>
             </ScrollView>
-
-
-            <MenuButtons activeIcon={activeIcon} setActiveIcon={setActiveIcon} />
 
         </View >
     )
