@@ -2,11 +2,32 @@ import React from 'react'
 import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import { Entypo, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { Rating, AirbnbRating } from 'react-native-elements';
+import { useDispatch, useSelector } from 'react-redux';
+import { addItem, removeItem } from '../redux/cartSlice';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 
 const ProductScreen = ({ route, navigation }) => {
 
+    const dispatch = useDispatch();
     const { productData } = route.params;
+    const cartItems = useSelector((store) => store.cart.items);
+
+    const [isExistInCart, setIsExistInCart] = useState(false);
+
+    const handleCart = () => {
+        const data = cartItems.find((item) => item.products.id === productData.id);
+        if (data) {
+            dispatch(removeItem(productData));
+            setIsExistInCart(false);
+        } else {
+            dispatch(addItem(productData));
+            setIsExistInCart(true);
+        }
+
+    }
+
 
     return (
         <>
@@ -36,7 +57,7 @@ const ProductScreen = ({ route, navigation }) => {
 
 
                     <Image
-                        style={{ width: '120%', aspectRatio: 3 / 2, marginTop: 10, marginLeft: -30 }}
+                        style={{ width: '120%', aspectRatio: 7 / 4, marginTop: 10, marginLeft: -30 }}
                         source={{ uri: productData.thumbnail }}
                     />
 
@@ -50,10 +71,13 @@ const ProductScreen = ({ route, navigation }) => {
                     </View>
 
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                        <TouchableOpacity style={{ width: '46%', borderRadius: 20, height: 56, backgroundColor: '#FFF', borderColor: '2A4BA0', borderWidth: 1, alignItems: 'center', justifyContent: 'center' }} onPress={() => navigation.navigate('Cart')}>
-                            <Text>
-                                Add To Cart
-                            </Text>
+                        <TouchableOpacity style={{ width: '46%', borderRadius: 20, height: 56, backgroundColor: '#FFF', borderColor: '2A4BA0', borderWidth: 1, alignItems: 'center', justifyContent: 'center' }} onPress={handleCart}>
+                            {
+                                isExistInCart
+                                    ? <Text> Remove To Cart</Text>
+                                    : <Text> Add To Cart</Text>
+                            }
+
                         </TouchableOpacity>
                         <TouchableOpacity style={{ width: '46%', borderRadius: 20, height: 56, backgroundColor: '#2A4BA0', alignItems: 'center', justifyContent: 'center' }} onPress={() => navigation.navigate('Cart')}>
                             <Text style={{ color: 'white' }}>

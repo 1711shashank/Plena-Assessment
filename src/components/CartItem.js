@@ -26,7 +26,7 @@ const CartItem = ({ cartItem }) => {
                         source={{ uri: cartItem?.products?.thumbnail }}
                     />
                     <View style={{ paddingLeft: 12 }}>
-                        <Text style={{ fintSize: 12, width: 150, paddingBottom: 4 }}>{cartItem?.products?.title}</Text>
+                        <Text style={{ fontSize: 12, width: 150, paddingBottom: 4 }}>{cartItem?.products?.title}</Text>
                         <Text style={{ fontSize: 12 }}>$ {cartItem?.products?.price}</Text>
                     </View>
                 </View>

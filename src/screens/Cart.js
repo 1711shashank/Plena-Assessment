@@ -9,9 +9,6 @@ const Cart = ({ navigation }) => {
 
     const cartItems = useSelector((store) => store.cart.items);
 
-    console.log(cartItems);
-
-
     const totalPrice = cartItems.reduce((total, item) => {
         console.log(item);
         const { price } = item.products;
