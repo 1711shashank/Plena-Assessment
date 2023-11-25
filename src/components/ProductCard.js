@@ -3,20 +3,28 @@ import { Image, Text, TouchableOpacity, View } from 'react-native'
 import { AntDesign, Ionicons } from '@expo/vector-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItemToFavourite, removeItemToFavourite } from '../redux/favouriteSlice';
-import { addItem } from '../redux/cartSlice';
-import { useFocusEffect } from '@react-navigation/native';
-import { useEffect } from 'react';
-
+import { addItem, removeItem } from '../redux/cartSlice';
 
 
 const ProductCard = ({ productData }) => {
 
     const dispatch = useDispatch();
+    const cartItems = useSelector((store) => store.cart.items);
     const favouriteItems = useSelector((store) => store.favourite.items);
-    const [isFavourite, setIsFavourite] = useState(favouriteItems.find((item) => item.id === productData.id)); 
+
+    const [isFavourite, setIsFavourite] = useState(favouriteItems.find((item) => item.id === productData.id));
+    const [isExistInCart, setIsExistInCart] = useState(cartItems.find((item) => item.products.id === productData.id));
+
 
     const handleAddCart = () => {
-        dispatch(addItem(productData));
+        const data = cartItems.find((item) => item.products.id === productData.id);
+        if (data) {
+            dispatch(removeItem(productData));
+            setIsExistInCart(false);
+        } else {
+            dispatch(addItem(productData));
+            setIsExistInCart(true);
+        }
     }
 
     const handleFavourite = () => {
@@ -54,7 +62,10 @@ const ProductCard = ({ productData }) => {
                     <Text style={{ color: '#616A7D', fontSize: 12 }} numberOfLines={2} ellipsizeMode="tail">{productData.title}</Text>
                 </View>
                 <TouchableOpacity onPress={handleAddCart} style={{ marginTop: 10, backgroundColor: '#2A4BA0', borderRadius: 50, padding: 5 }} >
-                    <AntDesign name="plus" size={20} color="#FFF" />
+                    {isExistInCart
+                        ? <AntDesign name="minus" size={20} color="#FFF" />
+                        : <AntDesign name="plus" size={20} color="#FFF" />
+                    }
                 </TouchableOpacity>
             </View>
         </>

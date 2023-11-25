@@ -43,7 +43,7 @@ const Home = ({ navigation }) => {
             <ScrollView>
                 <DiscountCoupons />
                 <Text style={{ color: '#1E222B', fontSize: 30, paddingVertical: 5 }}> Recommended </Text>
-                <View style={{ width: '100%', justifyContent: 'center', flexWrap: 'wrap', flexDirection: 'row', alignItems: 'flex-start' }}>
+                <View style={{ width: '100%', justifyContent: 'center', flexWrap: 'wrap', flexDirection: 'row', alignItems: 'flex-start', paddingBottom:80 }}>
 
                     {productsData?.map((item) => (
                         <TouchableOpacity

@@ -14,7 +14,7 @@ const Favourite = ({ navigation }) => {
         <View style={{ flex: 1, paddingTop: 50 }}>
 
             <Text style={{ color: '#1E222B', fontSize: 30, paddingVertical: 5 }}>  Favourite's    </Text>
-            <View style={{ width: '100%', justifyContent:'flex-start', flexWrap: 'wrap', flexDirection: 'row', alignItems: 'flex-start' }}>
+            <View style={{ width: '100%', justifyContent: 'flex-start', flexWrap: 'wrap', flexDirection: 'row', alignItems: 'flex-start', paddingBottom: 80 }}>
 
                 {favouriteItems?.map((item) => (
                     <TouchableOpacity

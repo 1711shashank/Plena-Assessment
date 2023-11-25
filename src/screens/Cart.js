@@ -10,7 +10,6 @@ const Cart = ({ navigation }) => {
     const cartItems = useSelector((store) => store.cart.items);
 
     const totalPrice = cartItems.reduce((total, item) => {
-        console.log(item);
         const { price } = item.products;
         const quantity = item.quantity;
         return total + (price * quantity);
