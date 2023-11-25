@@ -1,11 +1,11 @@
 import React from 'react'
 import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import { Entypo, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
-import { Rating, AirbnbRating } from 'react-native-elements';
+import { Rating } from 'react-native-elements';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItem, removeItem } from '../redux/cartSlice';
+import { addItemToFavourite, removeItemToFavourite } from '../redux/favouriteSlice';
 import { useState } from 'react';
-import { useEffect } from 'react';
 
 
 const ProductScreen = ({ route, navigation }) => {
@@ -14,7 +14,7 @@ const ProductScreen = ({ route, navigation }) => {
     const { productData } = route.params;
     const cartItems = useSelector((store) => store.cart.items);
 
-    const [isExistInCart, setIsExistInCart] = useState(false);
+    const [isExistInCart, setIsExistInCart] = useState(cartItems.find((item) => item.products.id === productData.id));
 
     const handleCart = () => {
         const data = cartItems.find((item) => item.products.id === productData.id);
@@ -25,7 +25,27 @@ const ProductScreen = ({ route, navigation }) => {
             dispatch(addItem(productData));
             setIsExistInCart(true);
         }
+    }
 
+    const handleBuyNow = () => {
+        handleCart();
+        navigation.navigate('Cart');
+    }
+
+
+    const favouriteItems = useSelector((store) => store.favourite.items);
+    const [isFavourite, setIsFavourite] = useState(favouriteItems.find((item) => item.id === productData.id));
+
+    const handleFavourite = () => {
+        const data = favouriteItems.find((item) => item.id === productData.id);
+
+        if (data) {
+            dispatch(removeItemToFavourite(productData));
+            setIsFavourite(false);
+        } else {
+            dispatch(addItemToFavourite(productData));
+            setIsFavourite(true)
+        }
     }
 
 
@@ -56,11 +76,20 @@ const ProductScreen = ({ route, navigation }) => {
                     <Rating type="custom" tintColor="#f2f2f2" ratingBackgroundColor='#d9d9d9' imageSize={20} startingValue={productData.rating} style={{ alignSelf: 'flex-start' }} />
 
 
-                    <Image
-                        style={{ width: '120%', aspectRatio: 7 / 4, marginTop: 10, marginLeft: -30 }}
-                        source={{ uri: productData.thumbnail }}
-                    />
+                    <View>
+                        <Image
+                            style={{ width: '120%', aspectRatio: 7 / 4, marginTop: 10, marginLeft: -30 }}
+                            source={{ uri: productData.thumbnail }}
+                        />
 
+                        <TouchableOpacity onPress={handleFavourite} style={{ position: 'absolute', backgroundColor: '#fff', padding: 12, paddingBottom: 8, borderRadius: 20, top: 20, right: -15 }}>
+                            {
+                                isFavourite
+                                    ? <Ionicons name="ios-heart-sharp" size={28} color="#FF8181" />
+                                    : <Ionicons name="ios-heart-outline" size={28} color="#3E4554" />
+                            }
+                        </TouchableOpacity>
+                    </View>
 
                     <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginVertical: 25 }}>
                         <Text style={{ color: '#2A4BA0', fontWeight: 'bold' }}>$ {productData.price}</Text>
@@ -79,7 +108,7 @@ const ProductScreen = ({ route, navigation }) => {
                             }
 
                         </TouchableOpacity>
-                        <TouchableOpacity style={{ width: '46%', borderRadius: 20, height: 56, backgroundColor: '#2A4BA0', alignItems: 'center', justifyContent: 'center' }} onPress={() => navigation.navigate('Cart')}>
+                        <TouchableOpacity style={{ width: '46%', borderRadius: 20, height: 56, backgroundColor: '#2A4BA0', alignItems: 'center', justifyContent: 'center' }} onPress={handleBuyNow}>
                             <Text style={{ color: 'white' }}>
                                 Buy Now
                             </Text>
