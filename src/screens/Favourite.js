@@ -1,13 +1,15 @@
 import React from 'react'
 import { Text, View } from 'react-native'
-import ProductCard from '../components/ProductCard'
+import MenuButtons from '../components/MenuButtons'
 
-const Favourite = () => {
+const Favourite = ({ navigation }) => {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text>
-                {/* <ProductCard  /> */}
+                Favourite Screen
             </Text>
+
+            <MenuButtons activeTab='Favourite' navigation={navigation} />
         </View>
     )
 }

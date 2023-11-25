@@ -5,6 +5,8 @@ import SearchBar from '../components/SearchBar';
 import AddressInfo from '../components/AddressInfo';
 import ProductCard from '../components/ProductCard';
 import DiscountCoupons from '../components/DiscountCoupons';
+import MenuButtons from '../components/MenuButtons';
+
 import axios from 'axios';
 
 const Home = ({ navigation }) => {
@@ -25,7 +27,7 @@ const Home = ({ navigation }) => {
     const [searchQuery, setSearchQuery] = useState('');
 
     return (
-        <View style={{ width: '100%', flex: 1, paddingTop: -30 }}>
+        <View style={{ flex: 1 }}>
 
             <View style={{ backgroundColor: '#2A4BA0', height: 280, paddingHorizontal: 20, paddingTop: 60 }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
@@ -55,6 +57,7 @@ const Home = ({ navigation }) => {
                 </View>
             </ScrollView>
 
+            <MenuButtons activeTab='Home' navigation={navigation} />
         </View>
     );
 };

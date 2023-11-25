@@ -1,14 +1,12 @@
 import React from 'react'
 import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native'
-import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
-
+import { Entypo, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { Rating, AirbnbRating } from 'react-native-elements';
 
 
 const ProductScreen = ({ route, navigation }) => {
 
     const { productData } = route.params;
-
-    console.log('itemId', productData);
 
     return (
         <>
@@ -20,7 +18,7 @@ const ProductScreen = ({ route, navigation }) => {
                         <TouchableOpacity style={{ backgroundColor: '#F8F9FB', padding: 10, borderRadius: 50 }} onPress={() => navigation.goBack()}>
                             <Entypo name="chevron-small-left" size={24} color="#1E222B" />
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={()=>navigation.navigate('Cart')} style={{ padding: 10, borderRadius: 50 }} >
+                        <TouchableOpacity onPress={() => navigation.navigate('Cart')} style={{ padding: 10, borderRadius: 50 }} >
                             <MaterialCommunityIcons name="shopping-outline" size={24} color="#1E222B" />
                         </TouchableOpacity>
                     </View>
@@ -34,7 +32,8 @@ const ProductScreen = ({ route, navigation }) => {
                         </Text>
                     </>
 
-                    <Text style={{ color: '#A1A1AB', marginTop: 10 }}> 🌟🌟🌟🌟🌟 110 Reviews </Text>
+                    <Rating type="custom" tintColor="#f2f2f2" ratingBackgroundColor='#d9d9d9' imageSize={20} startingValue={productData.rating} style={{ alignSelf: 'flex-start' }} />
+
 
                     <Image
                         style={{ width: '120%', aspectRatio: 3 / 2, marginTop: 10, marginLeft: -30 }}

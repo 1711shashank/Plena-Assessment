@@ -3,14 +3,15 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { Entypo, Feather, Ionicons, } from '@expo/vector-icons';
 
 
-const MenuButtons = ({ activeTab, setActiveTab }) => {
+const MenuButtons = ({ activeTab, navigation }) => {
+
     return (
 
         <View style={styles.menuButtons}>
 
             <View style={styles.menuButtonsWrapper}>
 
-                <TouchableOpacity style={[styles.iconWrapper, { left: '0%' }, activeTab === 'Home' && { top: -20 }]} onPress={() => setActiveTab('Home')}>
+                <TouchableOpacity style={[styles.iconWrapper, { left: '0%' }, activeTab === 'Home' && { top: -20 }]} onPress={() => navigation.navigate('Home')}>
                     <View style={activeTab === 'Home' && styles.iconView} >
                         {
                             activeTab === 'Home'
@@ -21,14 +22,14 @@ const MenuButtons = ({ activeTab, setActiveTab }) => {
                     <Text style={[styles.iconText, activeTab === 'Home' && { display: 'none' }]}> Home</Text>
                 </TouchableOpacity >
 
-                <TouchableOpacity style={[styles.iconWrapper, { left: '25%' }, activeTab === 'Categories' && { top: -20 }]} onPress={() => setActiveTab('Categories')}>
+                <TouchableOpacity style={[styles.iconWrapper, { left: '25%' }, activeTab === 'Categories' && { top: -20 }]} onPress={() => navigation.navigate('Categories')}>
                     <View style={activeTab === 'Categories' && styles.iconView} >
                         <Feather name="command" size={24} color={activeTab === 'Categories' ? '#E0B420' : '#3E4554'} />
                     </View>
                     <Text style={[styles.iconText, activeTab === 'Categories' && { display: 'none' }]}> Categories</Text>
                 </TouchableOpacity >
 
-                <TouchableOpacity style={[styles.iconWrapper, { left: '50%' }, activeTab === 'Favourite' && { top: -20 }]} onPress={() => setActiveTab('Favourite')}>
+                <TouchableOpacity style={[styles.iconWrapper, { left: '50%' }, activeTab === 'Favourite' && { top: -20 }]} onPress={() => navigation.navigate('Favourite')}>
                     <View style={activeTab === 'Favourite' && styles.iconView} >
                         {
                             activeTab === 'Favourite'
@@ -39,7 +40,7 @@ const MenuButtons = ({ activeTab, setActiveTab }) => {
                     <Text style={[styles.iconText, activeTab === 'Favourite' && { display: 'none' }]}> Favourite</Text>
                 </TouchableOpacity >
 
-                <TouchableOpacity style={[styles.iconWrapper, { left: '75%' }, activeTab === 'More' && { top: -20 }]} onPress={() => setActiveTab('More')}>
+                <TouchableOpacity style={[styles.iconWrapper, { left: '75%' }, activeTab === 'More' && { top: -20 }]} onPress={() => navigation.navigate('More')}>
                     <View style={activeTab === 'More' && styles.iconView} >
                         <Entypo name="dots-three-vertical" size={24} color={activeTab === 'More' ? '#E0B420' : '#3E4554'} />
                     </View>
