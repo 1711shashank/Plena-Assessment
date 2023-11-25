@@ -10,7 +10,7 @@ const ProductScreen = ({ setActiveScreen }) => {
             <View style={{ width: '100%', height: '100%', paddingTop: 50, paddingHorizontal: 30 }}>
 
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-                    <TouchableOpacity style={{ backgroundColor: '#F8F9FB', padding: 10, borderRadius: 50 }} onPress={()=>setActiveScreen('Home')}>
+                    <TouchableOpacity style={{ backgroundColor: '#F8F9FB', padding: 10, borderRadius: 50 }} onPress={() => setActiveScreen('Home')}>
                         <Entypo name="chevron-small-left" size={24} color="#1E222B" />
                     </TouchableOpacity>
                     <TouchableOpacity style={{ padding: 10, borderRadius: 50 }} >
@@ -46,12 +46,12 @@ const ProductScreen = ({ setActiveScreen }) => {
                 </View>
 
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <TouchableOpacity style={{ width: '46%', borderRadius: 20, height: 56, backgroundColor: '#FFF', borderColor: '2A4BA0', borderWidth: 1, alignItems: 'center', justifyContent: 'center' }} onPress={()=>setActiveScreen('Cart')}>
+                    <TouchableOpacity style={{ width: '46%', borderRadius: 20, height: 56, backgroundColor: '#FFF', borderColor: '2A4BA0', borderWidth: 1, alignItems: 'center', justifyContent: 'center' }} onPress={() => setActiveScreen('Cart')}>
                         <Text>
                             Add To Cart
                         </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ width: '46%', borderRadius: 20, height: 56, backgroundColor: '#2A4BA0', alignItems: 'center', justifyContent: 'center' }} onPress={()=> setActiveScreen('Cart')}>
+                    <TouchableOpacity style={{ width: '46%', borderRadius: 20, height: 56, backgroundColor: '#2A4BA0', alignItems: 'center', justifyContent: 'center' }} onPress={() => setActiveScreen('Cart')}>
                         <Text style={{ color: 'white' }}>
                             Buy Now
                         </Text>

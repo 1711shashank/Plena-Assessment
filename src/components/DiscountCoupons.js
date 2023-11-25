@@ -1,8 +1,6 @@
 import React from 'react'
 import { Image, TouchableOpacity, View, ScrollView } from 'react-native'
 
-
-
 const DiscountCoupons = () => {
     return (
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}            >
@@ -11,13 +9,13 @@ const DiscountCoupons = () => {
                 <TouchableOpacity>
                     <Image
                         style={{ width: 270, height: 123, borderRadius: 10, marginRight: 20 }}
-                        source={require('../Images/OfferImg.png')}
+                        source={require('../../Images/OfferImg.png')}
                     />
                 </TouchableOpacity>
                 <TouchableOpacity>
                     <Image
                         style={{ width: 270, height: 123, borderRadius: 10 }}
-                        source={require('../Images/OfferImg.png')}
+                        source={require('../../Images/OfferImg.png')}
                     />
                 </TouchableOpacity>
             </View>

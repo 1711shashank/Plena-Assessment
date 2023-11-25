@@ -1,17 +1,16 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Text, TouchableOpacity, View, ScrollView } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import SearchBar from './SearchBar'
-import AddressInfo from './AddressInfo'
-import ProductCard from './ProductCard'
-import DiscountCoupons from './DiscountCoupons';
+import SearchBar from '../components/SearchBar'
+import AddressInfo from '../components/AddressInfo'
+import ProductCard from '../components/ProductCard'
+import DiscountCoupons from '../components/DiscountCoupons';
 
 
 
-const Home = () => {
+const Home = ({ productsData }) => {
 
     const [searchQuery, setSearchQuery] = useState('');
-
 
 
     return (
@@ -39,12 +38,11 @@ const Home = () => {
                 <Text style={{ color: '#1E222B', fontSize: 30, paddingVertical: 5 }}> Recommended </Text>
                 <View style={{ flexWrap: 'wrap', flexDirection: 'row', alignItems: 'flex-start' }}>
 
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
+                    {
+                        productsData?.map((item) => (
+                            <ProductCard productData={item} key={item.id} />
+                        ))
+                    }
 
                 </View>
             </ScrollView>

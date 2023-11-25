@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { Entypo } from '@expo/vector-icons';
-import CartItem from './CartItem';
+import CartItem from '../components/CartItem';
 
 
 const Cart = ({setActiveScreen}) => {
