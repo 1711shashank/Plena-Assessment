@@ -43,7 +43,7 @@ const ProductCard = ({ productData }) => {
     return (
         <>
             <Image
-                style={{ width: '100%', height: '60%', borderRadius: 10 }}
+                style={{ width: '100%', height: '60%', borderRadius: 10, resizeMode: 'contain' }}
                 source={{ uri: productData.thumbnail }}
             />
 
@@ -61,6 +61,7 @@ const ProductCard = ({ productData }) => {
                     <Text style={{ color: '#1E222B', fontWeight: 600 }}> $ {productData.price}</Text>
                     <Text style={{ color: '#616A7D', fontSize: 12 }} numberOfLines={2} ellipsizeMode="tail">{productData.title}</Text>
                 </View>
+                
                 <TouchableOpacity onPress={handleAddCart} style={{ marginTop: 10, backgroundColor: '#2A4BA0', borderRadius: 50, padding: 5 }} >
                     {isExistInCart
                         ? <AntDesign name="minus" size={20} color="#FFF" />

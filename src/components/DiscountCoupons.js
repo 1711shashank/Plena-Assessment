@@ -3,7 +3,7 @@ import { Image, TouchableOpacity, View, ScrollView } from 'react-native'
 
 const DiscountCoupons = () => {
     return (
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}            >
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
 
             <View style={{ flexDirection: 'row', margin: 20, height: '100%' }}>
                 <TouchableOpacity>

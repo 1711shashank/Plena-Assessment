@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import { AntDesign } from '@expo/vector-icons';
 import { useDispatch } from 'react-redux'
-import { addItem, removeItem } from '../redux/cartSlice';
+import { addItem, reduceQuantity } from '../redux/cartSlice';
 
 
 const CartItem = ({ cartItem }) => {
@@ -14,7 +14,7 @@ const CartItem = ({ cartItem }) => {
     }
 
     const handleDecrement = (productData) => {
-        dispatch(removeItem(productData))
+        dispatch(reduceQuantity(productData))
     }
 
     return (
@@ -22,7 +22,7 @@ const CartItem = ({ cartItem }) => {
             <View style={{ width: '100%', paddingVertical: 20, borderBottomWidth: 0.5, borderBottomColor: '#EBEBFB', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                     <Image
-                        style={{ width: 50, height: 35 }}
+                        style={{ width: 50, height: 35, resizeMode: 'contain' }}
                         source={{ uri: cartItem?.products?.thumbnail }}
                     />
                     <View style={{ paddingLeft: 12 }}>

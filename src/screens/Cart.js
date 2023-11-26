@@ -25,14 +25,14 @@ const Cart = ({ navigation }) => {
                 <Text style={{ fontSize: 16 }}>Shopping Cart ({cartItems.length})</Text>
             </View>
 
-
             {
-                cartItems.map((cartItem) => (
-                    <CartItem cartItem={cartItem} />
+                cartItems.map((cartItem, index) => (
+                    <CartItem cartItem={cartItem} key={index}/>
                 ))
             }
 
             <View style={{ backgroundColor: '#F8F9FB', width: 380, height: 260, borderRadius: 30, padding: 20, position: 'absolute', bottom: -50 }}>
+                
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 5, marginHorizontal: 20 }}>
                     <Text style={{ color: '#616A7D' }}>Subtotal</Text>
                     <Text style={{ color: '#1E222B' }}>$ {totalPrice}</Text>

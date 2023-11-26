@@ -7,7 +7,7 @@ const SearchBar = ({ searchQuery, setSearchQuery }) => {
     const onChangeSearch = (query) => setSearchQuery(query);
 
     return (
-        <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: '#153075', borderRadius: 50, paddingLeft: 20, marginVertical: 30 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: '#153075', borderRadius: 50, paddingLeft: 20, marginVertical: 20 }}>
             <EvilIcons name="search" size={24} color="#FFF" />
             <TextInput
                 value={searchQuery}
